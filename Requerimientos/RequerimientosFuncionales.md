@@ -1,6 +1,6 @@
 Requerimientos Funcionales
 
-Cliente en la aplicación
+Cliente
 
   Gestionar cuenta
   - Registrarse en la aplicación como usuario.
@@ -17,23 +17,33 @@ Cliente en la aplicación
   - Ver estado del pedido.
 
 
+Empresa
 
-- Gestión de Clientes:
-  • Acceder a los datos personales de los clientes.
+  - Acceder a los datos personales de los clientes.
+  - Gestionar peticiones de los pedidos de los clientes.
 
-- Gestión de pedidos:
-  • Realizar pedido de productos.
+  Solicitar estadisticas
+  - Ver información sobre el estado de los pedidos.
+  - Ver información sobre la situación en tiempo real de los camiones.
+  - Ver información de clientes.
 
-- Gestión de reparto y rutas:
-  • Gestionar el reparto de las flotas de transporte a los clientes y las rutas de los camiones.
 
-- Estadisticas:
-  • Obtener información sobre el estado de los pedidos.
-  • Obtener información sobre la situación en tiempo real de los camiones.
-  • Obtener estadisticas sobre la información de los clientes.
+Gestores de ruta
 
-- Incidencias:
-  • Reportar incidencia.
+  - Ver incidencias.
+  - Gestionar incidencias.
+  - Gestionar reparto de las flotas de transporte a los clientes.
+  - Gestionar rutas de los camiones.
 
-- Gestión de pagos:
-  • Gestionar pago.
+
+Sistema de pedidos
+
+  - Verificar el maximo de 3 intentos para realizar un pedido.
+  - Preprocesar el pedido.
+  - Autorizar pedido.
+  - Aceptar pedido.
+
+
+Sistema de pagos
+
+  - Generar pago a traves de MercadoLibre.
