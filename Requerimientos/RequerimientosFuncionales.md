@@ -1,6 +1,21 @@
-Requerimientos Funcionales:
+Requerimientos Funcionales
 
-- Cliente usando la aplicación
+Cliente en la aplicación
+  Gestionar cuenta
+  - Registrarse en la aplicación como usuario.
+  - Iniciar sesión usando usuario y contraseña.
+  - Ver/actualizar la información del perfil.
+  - Ver historial de pedidos.
+
+  Gestionar pedidos
+  - Ver catalogo de productos alimenticios.
+  - Buscar productos usando filtros.
+  - Agregar/editar o eliminar pedido.
+  - Finalizar pedido.
+  - Realizar pago.
+  - Ver estado del pedido.
+
+
 
 - Gestión de Clientes:
   • Acceder a los datos personales de los clientes.
