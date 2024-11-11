@@ -1,6 +1,7 @@
 Requerimientos Funcionales
 
 Cliente en la aplicación
+
   Gestionar cuenta
   - Registrarse en la aplicación como usuario.
   - Iniciar sesión usando usuario y contraseña.
