@@ -6,7 +6,6 @@ Cliente en la aplicación
   - Iniciar sesión usando usuario y contraseña.
   - Ver/actualizar la información del perfil.
   - Ver historial de pedidos.
-
   Gestionar pedidos
   - Ver catalogo de productos alimenticios.
   - Buscar productos usando filtros.
