@@ -44,6 +44,11 @@ Sistema de pedidos
   - Aceptar pedido.
 
 
+Sistema de reparto
+
+  - Seleccionar algoritmo de optimización en función de la demora del camión.
+
+
 Sistema de pagos
 
   - Generar pago a traves de MercadoLibre.
