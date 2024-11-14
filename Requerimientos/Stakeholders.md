@@ -1,4 +1,7 @@
-Stakeholders:
+# Stakeholders:
+
   - Empresa.
+    
   - Clientes.
+  
   - Gestores de rutas.
