@@ -6,7 +6,7 @@ Modificabilidad: la nueva arquitectura debe ser menos rigida y mas facil de evol
 
 Escalabilidad: El sistema debe atender de forma rápida y automática a un número cada vez mayor de pedidos por hora.
 
-Rendimiento: el acceso a la base de datos y el uso de la aplicacion por parte de los clientes debe generar respuestas rapidas.
+Performance: el acceso a la base de datos y el uso de la aplicacion por parte de los clientes debe generar respuestas rapidas.
 
 Disponibilidad: los servicios criticos deben tener un mecanismo extra para garantizar alta disponibilidad.
 
