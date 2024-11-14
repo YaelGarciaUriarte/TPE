@@ -1,6 +1,6 @@
 # Vista de microservicios del sistema
 
-![vista-microservicios](https://github.com/user-attachments/assets/0c0df586-1625-4866-b524-507cfd296df7)
+![vista-microservicios](https://github.com/user-attachments/assets/083f7ead-e02d-4914-af7e-5e7b79246cbb)
 
 ## Explicación:
 
