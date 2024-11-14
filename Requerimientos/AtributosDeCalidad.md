@@ -4,7 +4,7 @@ Interoperabilidad con el sistema de pagos de MercadoLibre: El sistema debe poder
 
 Modificabilidad: la nueva arquitectura debe ser menos rigida y mas facil de evolucionar y actualizar.
 
-Escalabilidad: El sistema debe atender de forma rápida y automática a un número cada vez mayor de pedidos por hora.
+Escalabilidad: El sistema debe atender un número cada vez mayor de pedidos por hora.
 
 Performance: el acceso a la base de datos y el uso de la aplicacion por parte de los clientes debe generar respuestas rapidas.
 
