@@ -1,4 +1,4 @@
-# ADR2: Implementación de la persistencia de datos.
+# ADR2: Implementación de la persistencia de datos
  
 ## Contexto y planteamiento del problema
 
