@@ -8,7 +8,7 @@ En este sistema basado en microservicios, cada servicio gestiona su propia base 
 ## Factores que impulsan la toma de decisiones
 
 
-- Escalabilidad: En un sistema basado en eventos, los microservicios pueden reaccionar a eventos específicos sin necesidad de interactuar directamente con otros servicios. Esto reduce el acoplamiento entre ellos y mejora la escalabilidad.
+- Escalabilidad: El sistema debe atender un número cada vez mayor de pedidos por hora.
 
 - Además, la decisión en la iteración anterior donde implementamos un modelo de persistencia de datos nos indica la necesidad de mantener la consistencia y sincronización entre microservicios que interactúan frecuentemente.
 
