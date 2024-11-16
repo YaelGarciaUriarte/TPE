@@ -27,17 +27,17 @@ Se almacenan los eventos publicados en el bus de pedidos por los microservicios 
 
 Pasos:
 
-- El microservicio de Clientes solicita realizar un pedido al microservicio de Pedidos.
+1.  El microservicio de Clientes solicita realizar un pedido al microservicio de Pedidos.
  
-- El microservicio de Pedidos publica un evento de pedido.
+2. El microservicio de Pedidos publica un evento de pedido.
 
-- El evento de pedido se guarda en el Event Store y el microservicio de Pagos reacciona al evento para gestionar el pago.
+3. El evento de pedido se guarda en el Event Store y el microservicio de Pagos reacciona al evento para gestionar el pago.
 
-- El microservicio de Pagos publica un evento de pago OK.
+4. El microservicio de Pagos publica un evento de pago OK.
 
-- El evento de pago OK se guarda en el Event Store. El microservicio de Pedidos reacciona al evento para guardar el estado de pago del pedido y el microservicio de Repartos y Rutas reacciona al evento para gestionar el reparto.
+5. El evento de pago OK se guarda en el Event Store. El microservicio de Pedidos reacciona al evento para guardar el estado de pago del pedido y el microservicio de Repartos y Rutas reacciona al evento para gestionar el reparto.
 
-- El microservicio de Repartos y Rutas publica un evento de reparto OK.
+6. El microservicio de Repartos y Rutas publica un evento de reparto OK.
 
-- El evento de reparto OK se guarda en el Event Store y el microservicio de Pedidos reacciona al evento para guardar el estado de reparto del pedido.
+7. El evento de reparto OK se guarda en el Event Store y el microservicio de Pedidos reacciona al evento para guardar el estado de reparto del pedido.
 
