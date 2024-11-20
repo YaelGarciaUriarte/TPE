@@ -35,7 +35,7 @@ Los ADR vinculados a continuación registran las principales decisiones de arqui
 -  [Vista microservicios](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%201/vista-microservicios.md)
 #### [ADR2: Implementación de la persistencia de datos](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%202/ADR2-Implementaci%C3%B3n%20de%20la%20persistencia%20de%20datos.md)
 -  [Vista microservicios con DB](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%202/vista-microservicios-con-bases-de-datos.md)
-#### [ADR3: estrategia de consistencia de datos](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%203/ADR3-Estrategia%20de%20consistencia%20de%20datos.md)
+#### [ADR3: Estrategia de consistencia de datos](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%203/ADR3-Estrategia%20de%20consistencia%20de%20datos.md)
 -  [Vista Event Sourcing](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%203/vista-event-sourcing.md)
 #### [ADR4: Estrategia de Procesamiento Concurrente en la Gestión de Pedidos](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%204/ADR4-Estrategia%20de%20Procesamiento%20Concurrente%20en%20la%20Gesti%C3%B3n%20de%20Pedidos.md)
 -  [Vista concurrencia en microservicio de pedido](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%204/vista-concurrencia-microservicio-pedidos.md)
