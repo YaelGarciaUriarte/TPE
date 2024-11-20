@@ -19,9 +19,9 @@ Contacto del equipo:
 ### Actores
 - [Actores](https://github.com/YaelGarciaUriarte/TPE/blob/main/Requerimientos/Stakeholders.md)
 
-### Requisitos
+### Requerimientos
 
-Esta sección detalla los requisitos extraídos del enunciado.
+Esta sección detalla los requerimientos extraídos del enunciado.
 
 - [Requerimientos Funcionales](https://github.com/YaelGarciaUriarte/TPE/blob/main/Requerimientos/RequerimientosFuncionales.md)
   
