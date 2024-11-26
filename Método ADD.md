@@ -31,7 +31,7 @@ Gestión de clientes, pedidos, pagos, rutas, estadísticas e incidencias.
 Limitaciones técnicas del equipo, tiempo y recursos para la implementación inicial. (Suposiciones)
 
 #### - Preocupaciones arquitectónicas: 
-Escalabilidad, independencia de módulos y facilidad de despliegue.
+Escalabilidad, independencia de módulos y facilidad de despliegue.  
 
 
 
@@ -146,3 +146,158 @@ Escalabilidad, independencia de módulos y facilidad de despliegue.
   * **Tradeoff entre escalabilidad y consistencia:** La descentralización facilita la escalabilidad, pero puede complicar la consistencia de datos entre microservicios.
 - **Pendientes:**
   * Adoptar estrategias para garantizar consistencia y sincronización entre las bases de datos de los microservicios.
+
+# Aplicación del Método ADD en la Iteración 3: Estrategia de Consistencia de Datos
+
+## Paso 2: Establecer el objetivo de la iteración seleccionando los drivers
+
+- **Drivers seleccionados:**
+  * Escalabilidad.
+  * Pendiente de la iteración anterior.
+- **Objetivo de la iteración:** Implementar una estrategia de consistencia y sincronización entre las bases de datos de los microservicios.
+  
+## Paso 3: Seleccionar uno o más elementos del sistema a refinar
+
+- **Elemento seleccionado:** El mecanismo de consistencia de datos entre microservicios.
+- **Decisión:** Seleccionar una estrategia de consistencia y sincronización para las bases de datos de los microservicios.
+  
+## Paso 4: Elegir conceptos de diseño para satisfacer los drivers seleccionados
+- **Alternativas evaluadas:**
+  * Patrón Saga.
+  * Interacción directa entre microservicios.
+  * Event Sourcing.
+- **Alternativa seleccionada:** Event Sourcing.
+- **Justificación:**
+  * Event Sourcing permite que cada microservicio mantenga su propio estado y los sincronice mediante eventos, asegurando la consistencia eventual sin afectar la escalabilidad.
+
+
+## Paso 5: Instanciar elementos arquitectónicos, asignar responsabilidades y definir interfaces
+- Se agregan los siguientes componentes:
+  * **Bus de estadísticas:** Gestiona todos los eventos relacionados con las estadísticas.
+  * **Event Store de estadísticas:** Almacena los eventos publicados en el bus de estadísticas.
+  * **Bus de pedidos:** Gestiona todos los eventos relacionados con la realización de un nuevo pedido.
+  * **Event Store de pedidos:** Almacena los eventos publicados en el bus de pedidos.
+- En lugar de que los microservicios se comuniquen directamente entre sí, lo harán a través de eventos. Algunos microservicios publican eventos y otros microservicios reaccionan a los mismos.
+
+## Paso 6: Esbozar vistas y registrar decisiones
+
+- **Registro de decisiones:**
+  * En el ADR3 se registra la decisión clave que es la implementación de una estrategia basada en Event Sourcing
+  
+    [ADR3: Estrategia de consistencia de datos](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%203/ADR3-Estrategia%20de%20consistencia%20de%20datos.md)
+- **Vistas creadas:**
+  * Un diagrama de componentes mostrando la relación entre los microservicios, los bus de estadísticas y pedidos con sus respectivas bases de datos.
+  * Un diagrama de flujo mostrando los pasos de realizar un pedido, destacando cómo los eventos son generados, almacenados en el Event Store y distribuidos a través del sistema.
+    
+    [Vista Event Sourcing](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%203/vista-event-sourcing.md)
+
+## Paso 7: Realizar un análisis del diseño actual
+- **Evaluación de la solución:**
+  * Se validó que el enfoque de Event Sourcing mejora la consistencia eventual entre los microservicios sin generar dependencias fuertes entre ellos, lo que favorece la escalabilidad.
+- **Tradeoffs aceptados:**
+  * **Tradeoff entre escalabilidad y consistencia:** La implementación de Event Sourcing mejora la escalabilidad, pero introduce complejidad en la gestión de la consistencia entre microservicios, requiriendo un esfuerzo adicional para garantizar que los eventos sean correctamente procesados y almacenados.
+  * **Tradeoff entre desacoplamiento y complejidad operativa:** El uso de Event Sourcing reduce las dependencias directas entre microservicios, pero aumenta la complejidad operativa debido a la necesidad de gestionar los eventos, los Event Stores y las colas de mensajería.
+  * **Tradeoff entre historial completo y almacenamiento adicional:** Aunque el Event Sourcing permite mantener un registro completo de todos los eventos, esto requiere almacenamiento adicional para guardar los eventos de cada microservicio, lo que incrementa los costos y la carga de gestión del sistema.
+
+# Aplicación del Método ADD en la Iteración 4: Estrategia de Procesamiento Concurrente en la Gestión de Pedidos
+
+## Paso 2: Establecer el objetivo de la iteración seleccionando los drivers
+
+- **Drivers seleccionados:**
+  * Performance.
+  * Escalabilidad.
+- **Objetivo de la iteración:** Implementar un sistema de procesamiento concurrente para los pedidos, garantizando que el sistema pueda manejar múltiples solicitudes simultáneamente.
+  
+## Paso 3: Seleccionar uno o más elementos del sistema a refinar
+
+- **Elemento seleccionado:** El proceso secuencial de gestión de pedidos.
+- **Decisión:** Implementar una estrategia de concurrencia entre pedidos de modo que cada uno pueda avanzar a través de las fases de manera independiente, sin esperar a que otros pedidos terminen.
+  
+## Paso 4: Elegir conceptos de diseño para satisfacer los drivers seleccionados
+
+- **Alternativas evaluadas:**
+  * Seguir con el procesamiento secuencial de pedidos.
+  * Procesamiento concurrente de pedidos con balanceador de carga.
+- **Alternativa seleccionada:** Procesamiento concurrente con un balanceador de carga.
+- **Justificación :**
+  * Al permitir la ejecución paralela de pedidos, el sistema puede manejar un volumen más alto de solicitudes.
+  * La concurrencia permite procesar múltiples pedidos simultáneamente, reduciendo los tiempos de espera.
+
+## Paso 5: Instanciar elementos arquitectónicos, asignar responsabilidades y definir interfaces
+
+- Se agregan los siguientes componentes:
+  * **Instancias del microservicio de Pedidos:** Procesan los pedidos de manera independiente, permitiendo que cada uno avance sin esperar a los demás.
+  * **Balanceador de carga:** Distribuye las solicitudes entre las instancias del microservicio de pedidos de manera eficiente.
+
+## Paso 6: Esbozar vistas y registrar decisiones
+
+- **Registro de decisiones:**
+  * En el ADR4 se registra la decisión clave de adoptar una estrategia de procesamiento concurrente, con la implementación de un balanceador de carga.
+   
+    [ADR4: Estrategia de Procesamiento Concurrente en la Gestión de Pedidos](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%204/ADR4-Estrategia%20de%20Procesamiento%20Concurrente%20en%20la%20Gesti%C3%B3n%20de%20Pedidos.md)
+- **Vista creada:**
+  * Se incluye un diagrama de componentes que muestra la relación entre el microservicio de clientes, el balanceador de carga, las instancias de microservicio de pedidos y la base de datos y el bus asociados.
+  
+    [Vista concurrencia en microservicio de pedido](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%204/vista-concurrencia-microservicio-pedidos.md)
+
+## Paso 7: Realizar un análisis del diseño actual
+
+- **Evaluación de la solución:**
+  * Se validó que el procesamiento concurrente mejora la escalabilidad y reduce los tiempos de espera, permitiendo una mejor gestión de los pedidos.
+- **Tradeoffs aceptados:**
+  * **Tradeoff entre escalabilidad y latencia:** Aunque el balanceador de carga introduce una pequeña latencia, mejora significativamente la escalabilidad.
+  * **Tradeoff entre costos iniciales y rendimiento:** Configurar y mantener un balanceador de carga y ajustar el sistema para manejar concurrencia puede implicar costos y esfuerzos iniciales.
+  * **Tradeoff entre performance y complejidad:** El procesamiento paralelo mejora el rendimiento pero aumenta la complejidad operativa.
+
+# Aplicación del Método ADD en la Iteración 5: Implementación de Seguridad Basada en Autenticación y Roles
+
+## Paso 2: Establecer el objetivo de la iteración seleccionando los drivers
+
+- **Drivers seleccionados:**
+  * Seguridad.
+  * Requerimientos Funcionales.
+- **Objetivo de la iteración:** Implementar un sistema de seguridad basado en autenticación y roles, donde se definan roles específicos según las necesidades de cada usuario y su acceso a funcionalidades sensibles.
+
+## Paso 3: Seleccionar uno o más elementos del sistema a refinar
+
+- **Elemento seleccionado:** El control de acceso actual, que no tiene un control adecuado sobre los privilegios por usuario.
+- **Decisión:** Implementar un sistema de autenticación y asignación de roles basado en los requerimientos funcionales del sistema. Esto garantiza que cada usuario acceda solo a los recursos y funcionalidades necesarios para su tarea.
+  
+## Paso 4: Elegir conceptos de diseño para satisfacer los drivers seleccionados
+
+- **Alternativa seleccionada:** Control de acceso basado en autenticación y roles.
+- **Justificación :**
+  * Mejora la seguridad, garantizando que solo los usuarios autorizados tengan acceso a información sensible.
+  * Garantiza que los usuarios se autentiquen correctamente antes de acceder al sistema.
+    
+## Paso 5: Instanciar elementos arquitectónicos, asignar responsabilidades y definir interfaces
+
+- Se definen los siguientes roles según las necesidades de acceso a funcionalidades específicas:
+  * **Clientes.**
+  * **Administradores.**
+  * **Gestores de rutas.**
+    
+- Cada rol tiene funcionalidades específicas que puede realizar dentro del sistema.
+
+## Paso 6: Esbozar vistas y registrar decisiones
+
+- **Registro de decisiones:**
+  * En el ADR5 se registra la decisión clave de implementar un sistema de autenticación y roles para controlar el acceso a las funcionalidades del sistema.
+ 
+    [ADR5: Implementación de Seguridad Basada en Autenticación y Roles](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%205/ADR5-Implementaci%C3%B3n%20de%20Seguridad%20Basada%20en%20Autenticaci%C3%B3n%20y%20Roles.md)
+- **Vista creada:**
+  * Una tabla que muestra los diferentes roles que puede tener un usuario y las funcionalidades correspondientes a cada rol.
+ 
+    [Tabla de roles](https://github.com/YaelGarciaUriarte/TPE/blob/main/Iteraci%C3%B3n%205/tabla-roles.md)
+    
+## Paso 7: Realizar un análisis del diseño actual
+- **Evaluación de la solución:**
+Se validó que el sistema basado en roles mejora la seguridad y permite un control de acceso más efectivo, reduciendo la exposición a información sensible.
+- **Tradeoffs aceptados:**
+  * **Tradeoff entre seguridad y complejidad:** La implementación de roles introduce mayor complejidad en la gestión de usuarios, pero mejora la seguridad y el control de acceso.
+  * **Tradeoff entre flexibilidad y costos:** Definir y gestionar roles de manera efectiva requiere esfuerzos adicionales, pero proporciona flexibilidad y escalabilidad en la administración de usuarios.
+
+# Utilización de IA como asistente para la exploración y análisis de decisiones de diseño:
+**Durante el desarrollo del trabajo utilizamos ChatGPT para lo siguiente:**
+- Búsqueda de opciones que se podrían considerar para cada iteración.
+- Ventajas y desventajas de las opciones consideradas.
