@@ -41,11 +41,11 @@ Escalabilidad, independencia de módulos y facilidad de despliegue.
 
 - **Drivers seleccionados:**
 
-  * Modificabilidad.
+  * Escenario de Modificabilidad.
 
-  * Escalabilidad.
+  * Escenario de Escalabilidad.
 
-  * Desplegabilidad.
+  * Escenario de Desplegabilidad.
 - **Objetivo de la iteración:** Diseñar una solución que permita separar responsabilidades funcionales en microservicios independientes.
 
 ## Paso 3: Seleccionar uno o más elementos del sistema a refinar
@@ -97,9 +97,9 @@ Escalabilidad, independencia de módulos y facilidad de despliegue.
 
 ## Paso 2: Establecer el objetivo de la iteración seleccionando los drivers
 - **Drivers seleccionados:**
-  * Modificabilidad. 
-  * Escalabilidad.
-  * Desplegabilidad. 
+  * Escenario de Modificabilidad. 
+  * Escenario de Escalabilidad.
+  * Escenario de Desplegabilidad. 
 - **Objetivo de la iteración:** Diseñar un modelo de persistencia de datos independiente para cada microservicio.
 
 ## Paso 3: Seleccionar uno o más elementos del sistema a refinar
@@ -152,7 +152,7 @@ Escalabilidad, independencia de módulos y facilidad de despliegue.
 ## Paso 2: Establecer el objetivo de la iteración seleccionando los drivers
 
 - **Drivers seleccionados:**
-  * Escalabilidad.
+  * Escenario de Escalabilidad.
   * Pendiente de la iteración anterior.
 - **Objetivo de la iteración:** Implementar una estrategia de consistencia y sincronización entre las bases de datos de los microservicios.
   
@@ -204,8 +204,8 @@ Escalabilidad, independencia de módulos y facilidad de despliegue.
 ## Paso 2: Establecer el objetivo de la iteración seleccionando los drivers
 
 - **Drivers seleccionados:**
-  * Performance.
-  * Escalabilidad.
+  * Escenario de Performance.
+  * Escenario de Escalabilidad.
 - **Objetivo de la iteración:** Implementar un sistema de procesamiento concurrente para los pedidos, garantizando que el sistema pueda manejar múltiples solicitudes simultáneamente.
   
 ## Paso 3: Seleccionar uno o más elementos del sistema a refinar
@@ -254,7 +254,7 @@ Escalabilidad, independencia de módulos y facilidad de despliegue.
 ## Paso 2: Establecer el objetivo de la iteración seleccionando los drivers
 
 - **Drivers seleccionados:**
-  * Seguridad.
+  * Escenario de Seguridad.
   * Requerimientos Funcionales.
 - **Objetivo de la iteración:** Implementar un sistema de seguridad basado en autenticación y roles, donde se definan roles específicos según las necesidades de cada usuario y su acceso a funcionalidades sensibles.
 
